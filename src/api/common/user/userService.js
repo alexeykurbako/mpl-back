@@ -4,19 +4,12 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const UserRepository = require('./userRepository');
-const SettingService = require('../settings/settingsService');
 const cipher = require('../auth/cipherHelper');
-const CustomErrorService = require('../../../utils/customErrorService');
-
-const settingService = new SettingService();
+// const CustomErrorService = require('../../../utils/customErrorService');
 
 class UserService {
   constructor() {
     this.repository = new UserRepository();
-  }
-
-  getCount() {
-    return this.repository.getCount();
   }
 
   findByEmail(email) {
@@ -30,65 +23,6 @@ class UserService {
 
   addUser(user) {
     return this.repository.add(user);
-  }
-
-  addMany(users) {
-    return this.repository.addMany(users);
-  }
-
-  editUser(dto, userId) {
-    const user = this.mapDtoToUser(dto);
-
-    return this.repository.findAllUsersByEmail(user.email)
-      .then((users) => {
-        if (this._isDuplicateEmail(users, userId)) {
-          const errorData = {
-            error: {
-              code: 409,
-              field: 'email',
-              type: 'exist',
-            },
-          };
-
-          throw new CustomErrorService('Email error', errorData);
-        }
-
-        return this.repository.edit(userId, user);
-      })
-      .then(() => this.findById(userId))
-      .catch(error => {
-        throw error;
-      });
-  }
-
-  editCurrentUser(dto, userId) {
-    return this.editUser(dto, userId)
-      .then(user => {
-        return cipher.generateResponseTokens(user);
-      })
-      .catch(error => {
-        throw error;
-      });
-  }
-
-  deleteUser(id) {
-    return this.repository.delete(id);
-  }
-
-  changePassword(id, salt, passwordHash) {
-    return this.repository.changePassword(id, salt, passwordHash);
-  }
-
-  getPhoto(token) {
-    let decoded;
-
-    try {
-      decoded = jwt.verify(token, config.get('auth.jwt.accessTokenSecret'));
-    } catch (err) {
-      Promise.reject(new Error('invalid token'));
-    }
-
-    return this.repository.getPhoto(decoded.id);
   }
 
   list(filter) {
