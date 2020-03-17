@@ -12,10 +12,6 @@ require('./passport');
 const authController = require('./api/common/auth/authController');
 const userController = require('./api/common/user/userController');
 
-const SeedService = require('./api/seedService');
-
-const seedService = new SeedService();
-
 const app = express();
 const { port, root } = config.get('api');
 

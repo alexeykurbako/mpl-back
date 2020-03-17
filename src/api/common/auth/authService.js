@@ -22,10 +22,8 @@ class AuthService {
 
           const {salt, passwordHash} = cipher.saltHashPassword(user.password);
           const newUser = {
+            name: user.name,
             email: user.email,
-            fullName: user.fullName,
-            role: 'user',
-            age: 18,
             salt,
             passwordHash,
           };

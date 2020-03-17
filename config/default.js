@@ -12,7 +12,7 @@ module.exports = {
   },
 
   db: {
-    url: 'mongodb://localhost:27017/mpl',
+    url: 'mongodb+srv://mpltestuser:bsuir123@test-database-wmutn.mongodb.net/test',
     name: 'mpl',
   },
 
