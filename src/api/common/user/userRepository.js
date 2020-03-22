@@ -1,6 +1,4 @@
 
-
-const { ObjectID } = require('mongodb');
 const BaseRepository = require('../../../db/baseRepository');
 
 class UserRepository extends BaseRepository {
