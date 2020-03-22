@@ -37,7 +37,7 @@ function saltHashPassword(password) {
 }
 
 function generateResponseTokens(user) {
-  const normalizedUser = { id: user.id, role: user.role, email: user.email };
+  const normalizedUser = { id: user._id, email: user.email };
   const accessToken = jwt.sign(
     normalizedUser,
     config.get('auth.jwt.accessTokenSecret'),

@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
@@ -10,7 +8,7 @@ const logger = require('./utils/logger');
 require('./passport');
 
 const authController = require('./api/common/auth/authController');
-const userController = require('./api/common/user/userController');
+const commentController = require('./api/common/comment/commentController');
 
 const app = express();
 const { port, root } = config.get('api');
@@ -33,10 +31,8 @@ app.use(bodyParser.json());
 
 const auth = passport.authenticate('jwt', { session: false });
 
-// routes for common controllers
 app.use(`${root}/auth`, authController);
-
-app.use(`${root}/users`, auth, userController);
+app.use(`${root}/comments`, auth, commentController);
 
 app.use(logErrors);
 app.use(clientErrorHandler);

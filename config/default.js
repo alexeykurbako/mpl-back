@@ -15,7 +15,7 @@ module.exports = {
     jwt: {
       accessTokenSecret: '0d7c5c5f-768c-4d98-8900-13aadaa21937',
       refreshTokenSecret: '1a7v8c0l-391k-1f82-4492-tha3taa11334',
-      accessTokenLife: 3600,
+      accessTokenLife: 360000,
       refreshTokenLife: 2592000,
     },
     resetPassword: {

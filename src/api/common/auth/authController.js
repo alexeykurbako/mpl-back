@@ -7,7 +7,6 @@ const AuthService = require('./authService');
 
 const router = express.Router();
 const authService = new AuthService();
-const auth = passport.authenticate('jwt', { session: false });
 
 router.post('/sign-up', (req, res) => {
   authService
