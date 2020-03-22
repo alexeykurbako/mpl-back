@@ -8,10 +8,7 @@ const commentService = new CommentService();
 router.get('/', (req, res) => {
     commentService
         .list(req.query)
-        .then((comments) => {
-            console.log(comments)
-            res.send(comments)
-        })
+        .then((comments) => res.send(comments))
         .catch(err => res.status(400).send({ error: err.message }));
 });
 

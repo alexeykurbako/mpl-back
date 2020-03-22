@@ -37,6 +37,6 @@ app.use(`${root}/comments`, auth, commentController);
 app.use(logErrors);
 app.use(clientErrorHandler);
 
-app.listen(port);
+app.listen(process.env.PORT || 3001);
 
 logger.info(`Server start listening port: ${port}`);
