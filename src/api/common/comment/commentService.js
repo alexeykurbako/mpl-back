@@ -1,4 +1,4 @@
-const CommentRepository = require('./CommentRepository');
+const CommentRepository = require('./commentRepository');
 const { ObjectID } = require('mongodb');
 
 class CommentService {
