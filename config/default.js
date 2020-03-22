@@ -28,7 +28,7 @@ module.exports = {
   },
 
   db: {
-    url: 'mongodb+srv://mpltestuser:bsuir123@test-database-wmutn.mongodb.net/test',
+    url: 'mongodb+srv://mpltestuser:bsuir123@test-database-wmutn.mongodb.net/test?retryWrites=true&w=majority',
     name: 'mpl',
   },
 
