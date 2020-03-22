@@ -1,10 +1,10 @@
 {
   "name": "mpl",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/app.js",
   "scripts": {
     "start": "node ./src/app",
-    "dev": "./node_modules/.bin/nodemon ./src/app",
+    "dev": "nodemon ./src/app",
     "start:prod": "export NODE_ENV=production&&node ./src/app",
     "lint": "eslint --report-unused-disable-directives .",
     "lint:fix": "eslint --fix ."
@@ -33,5 +33,8 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
